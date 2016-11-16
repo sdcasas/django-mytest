@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # app own
-    'apps/alumno',
-    'apps/docente',
-    'apps/asignatura',
+    'apps.alumno',
+    'apps.docente',
+    'apps.asignatura',
     # app thirds parties
     'django_extensions',
 
