@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # app own
+    'apps.users',
     'apps.alumno',
     'apps.docente',
     'apps.asignatura',
@@ -86,7 +87,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'django_test',
         'HOST': 'localhost',
         'USER': 'postgres',
         'PASSWORD': 'serdaca',
