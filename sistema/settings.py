@@ -63,7 +63,10 @@ ROOT_URLCONF = 'sistema.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # Establesco la ruta por defecto de los template
+            BASE_DIR + '/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,21 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -135,7 +123,26 @@ STATIC_URL = '/static/'
 
 # by SDC
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
+
+# Establezco el lenguaje por defecto
+LANGUAGE_CODE = 'es-AR'
+
+# Establezco la zona horaria con la que debe trabajar django
+TIME_ZONE = 'America/Argentina/Catamarca'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # python manage.py collecstatic
 # error: django.core.exceptions.ImproperlyConfigured: You're using the staticfiles
 # app without having set the STATIC_ROOT setting to a filesystem path.
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
