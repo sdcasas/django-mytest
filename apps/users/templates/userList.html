@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block static_extra %}
+
+{% endblock %}
+
+{% block js_run %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+    } );
+</script>
+{% endblock %}
+
+{% block content %}
+
+<h3>Usuarios</h3>
+
+<table class="table table-striped table-hover " id="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Apellido</th>
+            <th>Nombrer</th>
+            <th width="110">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for value in object_list %}
+            <tr>
+                <td>{{value.id}}</td>
+                <td>{{value.username}}</td>
+                <td>{{value.last_name}}</td>
+                <td>{{value.first_name}}</td>
+                <td>
+                    <a href="{% url 'usr:update' value.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'usr:delete' value.id %}" class="btn btn-warning">Eliminar</a>
+                    <a href="{% url 'usr:detail' value.id %}" class="btn btn-warning">Ver</a>
+                </td>
+            </tr>
+        {% endfor%}
+  </tbody>
+</table> 
+
+{% endblock content %}

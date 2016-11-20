@@ -1,0 +1,7 @@
+{% extendes 'base.html' %}
+{% block content %}
+<h3> Bienvenido </h3>
+<p>Bienvenido {{user.username|upper}}</p>
+<p>Ultimo acceso en {{user.last_login}}</p>
+<p>eres miembro desde el {{user.date_join}}</p>
+{% endblock %}
