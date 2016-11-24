@@ -35,9 +35,9 @@
                 <td>{{value.last_name}}</td>
                 <td>{{value.first_name}}</td>
                 <td>
-                    <a href="{% url 'usr:update' value.id %}" class="btn btn-warning">Editar</a>
-                    <a href="{% url 'usr:delete' value.id %}" class="btn btn-warning">Eliminar</a>
-                    <a href="{% url 'usr:detail' value.id %}" class="btn btn-warning">Ver</a>
+                    <a href="{% url 'users:update' value.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'users:delete' value.id %}" class="btn btn-warning">Eliminar</a>
+                    <a href="{% url 'users:detail' value.id %}" class="btn btn-warning">Ver</a>
                 </td>
             </tr>
         {% endfor%}

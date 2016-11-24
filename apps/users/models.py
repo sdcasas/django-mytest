@@ -20,12 +20,12 @@ class AuthSignature(models.Model):
         User,
         null=True, blank=True,
         related_name='%(class)s_modiefied',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     modified_on = models.DateTimeField(
         # auto_now_add=True,
         blank=True,
-        # default=datetime.now
+        default=timezone.now,
         null=True,
     )
 

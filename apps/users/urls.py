@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^detail/(?P<pk>\d+)/$', UserDetail.as_view(), name='detail'),
     url(r'^delete/(?P<pk>\d+)/$', UserDelete.as_view(), name='delete'),
     url(r'^list$', UserList.as_view(), name='list'),
-    url(r'^login$', login),
-    url(r'^private$', private),
+    # access action
+    url(r'^login$', LoginView.as_view(), name='login'),
+    url(r'^logout$', LoginView.as_view(), name='logout'),
+    url(r'^$', private, name='index'),
 ]
