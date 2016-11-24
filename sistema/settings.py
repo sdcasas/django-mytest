@@ -37,14 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # app own
     'apps.users',
     'apps.alumno',
     'apps.docente',
     'apps.asignatura',
-    # app thirds parties
-    'django_extensions',
 
+    # app thirds parties
+    'braces',
+    'crispy_forms',
+    'django_extensions',
+    'django_tables2',
+    'rest_framework',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -93,7 +99,7 @@ DATABASES = {
         'NAME': 'django_test',
         'HOST': 'localhost',
         'USER': 'postgres',
-        'PASSWORD': 'serdaca',
+        'PASSWORD': 'postgres',
     }
 }
 
@@ -121,6 +127,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATIC_URL = '/static/'
 
+
+# ________________________________________________________________________________________________
 # by SDC
 
 # Internationalization
@@ -146,3 +154,44 @@ STATICFILES_DIRS = (
 # error: django.core.exceptions.ImproperlyConfigured: You're using the staticfiles
 # app without having set the STATIC_ROOT setting to a filesystem path.
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',),
+    # 'PAGE_SIZE': 500
+}
+
+# to debug_toolbar app
+if 'debug_toolbar' in INSTALLED_APPS:
+
+    MIDDLEWARE_CLASSES += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
+    # to debug_toolbar app
+    DEBUG_TOOLBAR_PANELS = [
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+    ]
+
+    # This example is unlikely to be appropriate for your project.
+    CONFIG_DEFAULTS = {
+        # Toolbar options
+        'RESULTS_CACHE_SIZE': 3,
+        'SHOW_COLLAPSED': True,
+        # Panel options
+        'SQL_WARNING_THRESHOLD': 100,   # milliseconds
+    }
+
+    INTERNAL_IPS = ('127.0.0.1',)
