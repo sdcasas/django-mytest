@@ -1,35 +1,83 @@
-{% load staticfiles %}
-<!--{% static ''%}-->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <title>{% block title %}Sistema{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+{% load staticfiles %} 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema en Django | {{ title|default:"My Test" }}</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'base/js/bootstrap/css/bootstrap.css'%}" media="screen">
-    <link rel="stylesheet" href="{% static 'base/js/bootstrap/extra/custom.min.css'%}">
-    <link rel="stylesheet" href="{% static 'base/css/styles.css'%}">
-    
+    <link rel="stylesheet" href="{% static 'base/css/heroic-features.css'%}" media="screen">
+
+    <!-- JavaScript -->
     <script src="{% static 'base/js/jquery/jquery-1.10.2.min.js'%}"></script>
-    <!--<script src="{% static 'base/js/jquery/jquery-migrate-3.0.0.min.js' %}"></script>-->
     <script src="{% static 'base/js/bootstrap/extra/bootstrap.min.js'%}"></script>
-    <script src="{% static 'base/js/bootstrap/extra/custom.js'%}"></script>
     
+
+    {% block static_extra %}
     <!-- cargo archivos estaticos extra de ser necesario  -->
-    {% block static_extra %}{% endblock %}
+    {% endblock %}
+    
+    {% block js_run %}
     <!-- cargo ejecucion de js de ser necesario -->
-    {% block js_run %}{% endblock %}
+    {% endblock %}
+
 </head>
+
 <body>
+    <!-- Navigation -->
     {% include 'base/inc_menu.html' %}
-    {# <div class="page-header" id="banner"></div>  #}
-    {# <div class="container"> #}
-    {% block content %}{% endblock %}
-    {# </div> #}
-    <footer class="footer">
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <!--
+        <header class="jumbotron hero-spacer">
+            <h1>A Warm Welcome!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            </p>
+        </header>
+        -->
+
         
-    </footer>
+
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>{{ title|default:"My Test" }}</h3>
+            </div>
+        </div>
+
+        <hr>
+        
+        <!-- /.row -->
+
+        {% block content %}
+        <!-- CONTENIDO PRINCIPAL -->
+        {% endblock %}
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
 </body>
 </html>
